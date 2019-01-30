@@ -45,7 +45,7 @@ class Solicitacao(models.Model):
         ('C', 'Confirmada'),
     )
 
-    consumidor = models.ForeignKey(Consumidor, on_delete=models.CASCADE, related_name='pedidos')
-    lavanderia = models.ForeignKey(Lavanderia, on_delete=models.CASCADE, related_name='pedidos')
+    consumidor = models.ForeignKey(Consumidor, on_delete=models.CASCADE, related_name='solicitacoes')
+    lavanderia = models.ForeignKey(Lavanderia, on_delete=models.CASCADE, related_name='solicitacoes')
     servico_solicitado = models.CharField(max_length=255)
     status = models.CharField(max_length=1, choices=STATUS_SOLICITACAO)
