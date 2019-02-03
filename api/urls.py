@@ -1,8 +1,18 @@
 from django.urls import path, include
+from rest_framework.authtoken.views import obtain_auth_token
+from rest_framework.routers import DefaultRouter
 
-from api.views import UsuarioView, ConsumidorView
+from api.views import UsuarioView, ConsumidorView, LavanderiaView, SolicitacaoView, PedidoView
+
+router = DefaultRouter()
+
+router.register(r'usuarios', UsuarioView)
+router.register(r'consumidores', ConsumidorView)
+router.register(r'lavanderias', LavanderiaView)
+router.register(r'solicitacoes', SolicitacaoView)
+router.register(r'pedidos', PedidoView)
 
 urlpatterns = [
-    path('usuarios/', UsuarioView.as_view({'get': 'list'}), name='usuarios'),
-    path('consumidores/', ConsumidorView.as_view({'get': 'list'}), name='consumidores'),
+    path('', include(router.urls)),
+    path('api-token/', obtain_auth_token),
 ]
