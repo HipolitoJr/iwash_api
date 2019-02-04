@@ -14,6 +14,9 @@ class Consumidor(models.Model):
     sexo = models.CharField(max_length=1, choices=SEXOS, blank=False)
     usuario = models.OneToOneField(User, on_delete=models.CASCADE, related_name='perfil')
 
+    def name_usuario(self):
+        return self.usuario.username
+
 
 class Lavanderia(models.Model):
 

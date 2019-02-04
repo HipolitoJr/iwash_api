@@ -14,5 +14,5 @@ router.register(r'pedidos', PedidoView)
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('api-token/', obtain_auth_token),
+    path('token/', obtain_auth_token),
 ]

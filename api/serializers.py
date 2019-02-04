@@ -7,16 +7,23 @@ class UsuarioSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('id', 'username', 'email', 'first_name',)
+        fields = ('id', 'email', 'username', 'password')
+        extra_kwargs = {'password': {'write_only': True}}
 
+    def create(self, validated_data):
+        user = User(
+            email=validated_data['email'],
+            username=validated_data['username']
+        )
+        user.set_password(validated_data['password'])
+        user.save()
+        return user
 
 class ConsumidorSerializer(serializers.ModelSerializer):
 
-    #usuario = UsuarioSerializer(read_only=False)
-
     class Meta:
         model = Consumidor
-        fields = ('id', 'nome_completo', 'sexo', 'usuario',)
+        fields = ('id', 'nome_completo', 'sexo', 'usuario', )
 
 
 class LavanderiaSerializer(serializers.ModelSerializer):
