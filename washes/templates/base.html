@@ -1,0 +1,76 @@
+{% load staticfiles %}
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>iWash</title>
+    <link rel="icon" type="image/png" href="{% static 'img/icon_bubbles.png' %}" />
+    <link rel="stylesheet" href="{% static 'styles/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/fontawesome/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/animate.css' %}">
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+
+    <script src="{% static 'scripts/vendor/jquery-1.9.1.js' %}"></script>
+    <script src="{% static 'scripts/vendor/bootstrap-min.js' %}"></script>
+
+</head>
+<body>
+
+<nav>
+    <div class="nav-wrapper" style="padding-left: 16px; background: #1E90FF;">
+        <a href="#" class="brand-logo">iWash</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="#">Perfil</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="row">
+
+<div class="col-md-3 nav-bar card collection with-header">
+
+    <ul>
+        <li class="collection-header text-center">
+            <logo>{{ user.lavanderia.nome_fantasia }}</logo>
+            <br>
+
+            <img width="120" src="http://planetalavanderia.com.br/wp-content/uploads/laundry.png">
+            <br>
+            <br>
+        </li>
+        <a><li class="collection-item">Home</li></a>
+        <br>
+        <a><li class="collection-item">Lavanderias</li></a>
+        <br>
+        <a><li class="collection-item">Solicitações</li></a>
+        <br>
+        <a><li class="collection-item">Pedidos</li></a>
+        <br>
+        <a><li class="collection-item">Propostas enviadas</li></a>
+        <br>
+
+    </ul>
+
+</div>
+
+
+<div class="col-md-9">
+
+    {% block body %}
+    {% endblock %}
+
+</div>
+
+</div>
+
+</body>
+</html>

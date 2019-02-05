@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block body %}
+
+
+<div class="card-panel">
+    <div class="panel-heading">
+        <logo>Solicitações</logo>
+    </div>
+</div>
+
+    {% for solicitacao in solicitacoes %}
+
+    <div class="card-panel card-panel-default">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-md-6">
+                    Solicitado por: <span>{{ solicitacao.consumidor.nome_completo }}</span>
+                </div>
+
+                <div class="col-md-6" style="text-align: right;">
+                    {% if solicitacao.status == 'A' %}
+                        Aguardando aprovação...
+                    {% elif solicitacao.status == 'C' %}
+                        Confirmada
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <logo style="font-size: 14pt;">
+                        {{ solicitacao.servico_solicitado }}
+                    </logo>
+                </div>
+            </div>
+
+             <div class="row text-center">
+                <div class="col-md-12">
+                    <button class="btn btn-sm btn-primary">
+                        Aceitar
+                    </button>
+                    <button class="btn btn-sm btn-secondary red">
+                        Recusar
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    {% endfor %}
+
+{% endblock %}
