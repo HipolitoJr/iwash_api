@@ -1,0 +1,44 @@
+{% load staticfiles %}
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iWash</title>
+    <link rel="icon" type="image/png" href="{% static 'img/icon_bubbles.png' %}" />
+
+    <link rel="stylesheet" href="{% static 'styles/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/fontawesome/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/signin.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/animate.css' %}">
+
+    <script src="{% static 'scripts/vendor/jquery-1.9.1.js' %}"></script>
+    <script src="{% static 'scripts/vendor/bootstrap-min.js' %}"></script>
+
+</head>
+<body>
+
+
+
+<div class="container">
+
+    <div class="row content">
+        {% block body %}
+        {% endblock %}
+    </div>
+
+</div>
+
+
+<footer class="footer">
+    <div class="container">
+        <p class="text-muted"> &copy iWash</p>
+        <small class="text-muted text-right">Developed by: equipe iWash</small>
+    </div>
+</footer>
+
+
+
+</body>
+</html>

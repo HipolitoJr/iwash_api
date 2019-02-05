@@ -1,0 +1,57 @@
+{% extends 'base_sign.html' %}
+{% block body %}
+
+    <div class="col-md-4"></div>
+
+    <div class="col-md-4" style="background: #fff; padding: 24px; border: 1px solid gray; border-radius: 6px">
+
+        <form class="form-signin" role="form" action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+
+            <h2 class="form-signin-heading text-center" style="font-family: 'Comic Sans MS'">Acesse sua conta</h2>
+            <br>
+            <br>
+
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <input type="text" id="id_username" name="username" class="form-control" placeholder="Nome de usuário:" required autofocus>
+            </div>
+
+            <br>
+
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                <input type="password" id="id_password" name="password" class="form-control" placeholder="Senha" required>
+            </div>
+
+            <br>
+            <p align="end">
+                Esqueceu sua senha ?<a href="#"> <strong>Clique aqui.</strong> </a>
+            </p>
+            <br>
+
+            <button class="btn btn-lg btn-primary btn-block" type="submit" value="Login">Entrar</button>
+
+            {% if form.errors %}
+                <div class="alert alert-danger">
+
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+
+                    Por favor, verifique o Email e/ou Senha informados
+                </div>
+            {% endif %}
+
+                <hr />
+
+                <p align="center">
+                    Ainda não possui cadastro ?<a href="#"> <strong>Junte-se a nós.</strong></a>
+                </p>
+
+        </form>
+
+    </div>
+
+    <div class="col-md-4"></div>
+
+
+{% endblock %}
