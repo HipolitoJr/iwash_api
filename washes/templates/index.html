@@ -15,6 +15,7 @@
             <div class="row">
                 <div class="col-md-6">
                     Solicitado por: <span>{{ solicitacao.consumidor.nome_completo }}</span>
+                    <span style="font-size: 8pt;">em < {{ solicitacao.data_solicitacao }}</span> >
                 </div>
 
                 <div class="col-md-6" style="text-align: right;">
@@ -34,16 +35,21 @@
                 </div>
             </div>
 
-             <div class="row text-center">
-                <div class="col-md-12">
-                    <button class="btn btn-sm btn-primary">
-                        Aceitar
-                    </button>
-                    <button class="btn btn-sm btn-secondary red">
-                        Recusar
-                    </button>
-                </div>
-            </div>
+            {% if solicitacao.status == 'A' %}
+
+                 <div class="row text-center">
+                    <div class="col-md-12">
+                        <a class="btn btn-sm btn-primary" href="{% url 'aceitar_solicitacao' solicitacao.id %}">
+                            Aceitar
+                        </a>
+                        <a class="btn btn-sm btn-secondary red" href="{% url 'recusar_solicitacao' solicitacao.id %}">
+                            Recusar
+                        </a>
+                    </div>
+                 </div>
+
+            {% endif %}
+
         </div>
 
 

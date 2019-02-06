@@ -2,6 +2,9 @@ from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
+from django.utils.timezone import now
+
+
 class Consumidor(models.Model):
 
     SEXOS = (
@@ -46,9 +49,19 @@ class Solicitacao(models.Model):
     STATUS_SOLICITACAO = (
         ('A', 'Aguardando'),
         ('C', 'Confirmada'),
+        ('R', 'Recusada'),
     )
 
+    data_solicitacao = models.DateTimeField(auto_now_add=True)
     consumidor = models.ForeignKey(Consumidor, on_delete=models.CASCADE, related_name='solicitacoes')
     lavanderia = models.ForeignKey(Lavanderia, on_delete=models.CASCADE, related_name='solicitacoes')
     servico_solicitado = models.CharField(max_length=255)
-    status = models.CharField(max_length=1, choices=STATUS_SOLICITACAO)
+    status = models.CharField(max_length=1, choices=STATUS_SOLICITACAO, default='A')
+
+    def aceitar(self):
+        self.status = 'C'
+        self.save()
+
+    def recusar(self):
+        self.status = 'R'
+        self.save()
