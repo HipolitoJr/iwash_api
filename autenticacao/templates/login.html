@@ -41,10 +41,19 @@
                 </div>
             {% endif %}
 
+            {% if messages %}
+                <br>
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li class="{{ message.tags }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
                 <hr />
 
                 <p align="center">
-                    Ainda não possui cadastro ?<a href="#"> <strong>Junte-se a nós.</strong></a>
+                    Ainda não possui cadastro ?<a href="{% url 'sign_up' %}"> <strong>Junte-se a nós.</strong></a>
                 </p>
 
         </form>
