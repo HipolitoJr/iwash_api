@@ -19,11 +19,16 @@ class UsuarioSerializer(serializers.ModelSerializer):
         user.save()
         return user
 
+
 class ConsumidorSerializer(serializers.ModelSerializer):
+
+    usuario = UsuarioSerializer()
 
     class Meta:
         model = Consumidor
         fields = ('id', 'nome_completo', 'sexo', 'usuario', )
+
+
 
 
 class LavanderiaSerializer(serializers.ModelSerializer):
@@ -39,7 +44,7 @@ class SolicitacaoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Solicitacao
-        fields = ('id', 'consumidor', 'lavanderia', 'servico_solicitado', 'status', )
+        fields = ('id', 'consumidor', 'lavanderia', 'data_solicitada', 'servico_solicitado', 'status', )
 
 
 class PedidoSerializer(serializers.ModelSerializer):
